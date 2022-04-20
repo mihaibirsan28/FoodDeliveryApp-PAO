@@ -1,104 +1,25 @@
 
-import AppDelivery.AppDelivery;
-import Comanda.Comanda;
-import Comanda.ComandaFelMancare;
-import Persoane.Client;
-import Persoane.Curier.Curier;
-import Persoane.Curier.CurierBiciclist;
-import Persoane.Curier.CurierSofer;
-import Restaurant.FelMancare;
-import Restaurant.Restaurant;
+import entities.appDelivery.AppDelivery;
+import entities.comanda.Comanda;
+import entities.comanda.ComandaFelMancare;
+import entities.persoane.Client;
 
-import  java.util.PriorityQueue;
-import java.util.ArrayList;
+import entities.persoane.curier.CurierBiciclist;
+import entities.persoane.curier.CurierSofer;
+import entities.restaurant.FelMancare;
+import entities.restaurant.Restaurant;
+import services.ComandaServiceImpl;
+import services.RestaurantServiceImpl;
+import services.CurierSoferServiceImpl;
+import services.CurierBiciclistServiceImpl;
+import services.ClientServiceImpl;
+import services.AppDeliveryServiceImpl;
+
 import java.util.Date;
 
-public class Main implements Service{
-
-
-    @Override
-    public void adaugaClient(AppDelivery a, Client client) {
-        a.adaugaClienti(client);
-    }
-
-    @Override
-    public void eliminaClient(AppDelivery a, Client client) {
-        a.eliminaClient(client);
-    }
-
-    @Override
-    public void adaugaCurier(AppDelivery a, Curier curier) {
-        a.adaugaCurier(curier);
-    }
-
-    @Override
-    public void eliminaCurier(AppDelivery a, Curier curier) {
-        a.eliminaCurier(curier);
-    }
-
-    @Override
-    public void adaugaRestaurant(AppDelivery a, Restaurant restaurant) {
-        a.adaugaRestaurant(restaurant);
-    }
-
-    @Override
-    public void eliminaRestaurant(AppDelivery a, Restaurant restaurant) {
-        a.eliminaRestaurant(restaurant);
-    }
-
-    @Override
-    public void marireSalariu(AppDelivery a, Curier c, double marire) {
-        a.marireSalariu(c,marire);
-    }
-
-    @Override
-    public void afiseazaComanda(Client client) {
-        client.afiseazaComanda();
-    }
-
-    @Override
-    public void afisareComenziEfectuate(CurierSofer curierSofer) {
-        curierSofer.afisareComenziEfectuate();
-    }
-
-    @Override
-    public void afisareComenziEfectuate(CurierBiciclist curierBiciclist) {
-        curierBiciclist.afisareComenziEfectuate();
-    }
-
-    @Override
-    public void adaugaFelMancare(Restaurant restaurant, FelMancare felMancare) {
-        restaurant.adaugaFelMancare(felMancare);
-    }
-
-    @Override
-    public void stergeFelMancare(Restaurant restaurant, FelMancare felMancare) {
-        restaurant.stergeFelMancare(felMancare);
-    }
-
-    @Override
-    public void afisareNrComenziEfectuate(CurierSofer curierSofer) {
-        curierSofer.afisareNrComenziEfectuare();
-    }
-
-    @Override
-    public void afisareNrComenziEfectuate(CurierBiciclist curierBiciclist) {
-        curierBiciclist.afisareNrComenziEfectuare();
-    }
-
-    @Override
-    public void afiseazaComanda(Comanda comanda) {
-        comanda.afiseazaComanda();
-    }
-
-//    @Override
-//    public void afisareCurieriSoferi(AppDelivery a, ArrayList<CurierSofer> soferi) {
-//        a.afisareCurieriSoferi(soferi);
-//    }
+public class Main{
 
     public static void main(String[] args) {
-
-        Main main = new Main();
 
         //clienti
         Client client1 = new Client(1,"Birsan", "Mihai", "0729425374",  "Strada 13 Septembrie");
@@ -127,45 +48,48 @@ public class Main implements Service{
         FelMancare felMancare7 = new FelMancare("Salata vinere", 20.00, "vinete, ceapa, ulei");
 
         AppDelivery appDelivery = new AppDelivery();
+        AppDeliveryServiceImpl AppDService = new AppDeliveryServiceImpl();
 
         //adaugam restaurante, curieri si clienti/useri
-        appDelivery.adaugaRestaurant(restaurant1);
-        appDelivery.adaugaRestaurant(restaurant2);
-        appDelivery.adaugaRestaurant(restaurant3);
+        AppDService.adaugaRestaurant(appDelivery, restaurant1);
+        AppDService.adaugaRestaurant(appDelivery, restaurant2);
+        AppDService.adaugaRestaurant(appDelivery, restaurant3);
 
-        appDelivery.adaugaCurier(curierSofer1);
-        appDelivery.adaugaCurier(curierBiciclist1);
-        appDelivery.adaugaCurier(curierSofer2);
-        appDelivery.adaugaCurier(curierBiciclist2);
+        AppDService.adaugaCurier(appDelivery, curierSofer1);
+        AppDService.adaugaCurier(appDelivery, curierBiciclist1);
+        AppDService.adaugaCurier(appDelivery, curierSofer2);
+        AppDService.adaugaCurier(appDelivery, curierBiciclist2);
 
-        appDelivery.adaugaClienti(client1);
-        appDelivery.adaugaClienti(client2);
-        appDelivery.adaugaClienti(client3);
+        AppDService.adaugaClient(appDelivery, client1);
+        AppDService.adaugaClient(appDelivery, client2);
+        AppDService.adaugaClient(appDelivery, client3);
 
-        //adaugam felurile de mancare pentru fiecare restaurant
-        restaurant1.adaugaFelMancare(felMancare1);
-        restaurant1.adaugaFelMancare(felMancare5);
-        restaurant2.adaugaFelMancare(felMancare2);
-        restaurant2.adaugaFelMancare(felMancare3);
-        restaurant3.adaugaFelMancare(felMancare4);
-        restaurant3.adaugaFelMancare(felMancare6);
 
-        //scoatem un fel de mancare din lista preparatelor unui restaurant
-        restaurant1.adaugaFelMancare(felMancare7);
-        restaurant1.stergeFelMancare(felMancare7);
+        RestaurantServiceImpl RestaurantService = new RestaurantServiceImpl();
+        //adaugam felurile de mancare pentru fiecare entities.restaurant
+        RestaurantService.adaugaFelMancare(restaurant1, felMancare1);
+        RestaurantService.adaugaFelMancare(restaurant1, felMancare5);
+        RestaurantService.adaugaFelMancare(restaurant2, felMancare2);
+        RestaurantService.adaugaFelMancare(restaurant2, felMancare3);
+        RestaurantService.adaugaFelMancare(restaurant3, felMancare4);
+        RestaurantService.adaugaFelMancare(restaurant3, felMancare6);
 
-        //adaugam o comanda
+        //scoatem un fel de mancare din lista preparatelor unui entities.restaurant
+        RestaurantService.adaugaFelMancare(restaurant1, felMancare7);
+        RestaurantService.stergeFelMancare(restaurant1, felMancare7);
+
+        //adaugam o entities.comanda
         Comanda comanda1 = new Comanda(1, client1, restaurant1, curierSofer1, new Date(2022,3,27,12,3),70.00);
         Comanda comanda2 = new Comanda(2, client2, restaurant2, curierBiciclist1, new Date(2022, 27, 3,14,9), 57.00);
         Comanda comanda3 = new Comanda(3, client3, restaurant3, curierBiciclist1, new Date(2022, 3,23, 21,14), 128.00);
 
-        //adaugam felurile de mancare din comanda
+        //adaugam felurile de mancare din entities.comanda
         ComandaFelMancare comandaFelMancare1 = new ComandaFelMancare(restaurant1, "Pizza QuatroStagioni", 35.00);
         ComandaFelMancare comandaFelMancare2 = new ComandaFelMancare(restaurant2, "Antricot Vita", 57.00);
         ComandaFelMancare comandaFelMancare3 = new ComandaFelMancare(restaurant3, "Caracatita grill", 78.00);
         ComandaFelMancare comandaFelMancare4 = new ComandaFelMancare(restaurant3, "Somon", 50.00);
 
-        //adaugam felurile de mancare comandate in comanda respectiva
+        //adaugam felurile de mancare comandate in entities.comanda respectiva
         comanda1.adaugaFelMancare(restaurant1, "Pizza QuatroStagioni", 35.00);
         comanda2.adaugaFelMancare(restaurant2, "Antricot Vita", 57.00);
         comanda3.adaugaFelMancare(restaurant3, "Caracatita grill", 78.00);
@@ -175,50 +99,60 @@ public class Main implements Service{
         appDelivery.adaugaComanda(comanda2);
         appDelivery.adaugaComanda(comanda3);
 
-        //afisare comanda + ce contine comanda
-        comanda3.afiseazaComanda();
+        ClientServiceImpl clientService = new ClientServiceImpl();
+        clientService.afiseazaComanda(client1);
+        System.out.println("-----------");
+
+        ComandaServiceImpl ComandaService = new ComandaServiceImpl();
+        //afisare entities.comanda + ce contine entities.comanda
+        ComandaService.afiseazaComanda(comanda3);
         System.out.println();
 
         //afisare profil client
         System.out.println(client1);
         System.out.println();
 
-        //afisare comanda unui client
-        client1.afiseazaComanda();
+        //afisare entities.comanda unui client
+        ComandaService.afiseazaComanda(comanda1);
         System.out.println();
 
+        CurierSoferServiceImpl curierSoferService = new CurierSoferServiceImpl();
+        CurierBiciclistServiceImpl curierBiciclistService = new CurierBiciclistServiceImpl();
         //afisare comenzi facute de un curier:
-        //curierBiciclist1.adaugaComanda(comanda2);
-        curierBiciclist1.afisareComenziEfectuate();
+        curierBiciclistService.afisareComenziEfectuate(curierBiciclist1);
         System.out.println();
+
+        curierSoferService.afisareComenziEfectuate(curierSofer1);
+        System.out.println();
+
+
 
         //afisare numar de comenzi efectuate de un curier
-        curierBiciclist1.afisareNrComenziEfectuare();
+        curierBiciclistService.afisareNrComenziEfectuate(curierBiciclist1);
         System.out.println();
 
         //marim salariul unui curier
         System.out.println(curierSofer1.getNumeComplet() + " are salariul:");
         System.out.println(curierSofer1.getSalariu());
-        appDelivery.marireSalariu(curierSofer1, 200.00);
+        AppDService.marireSalariu(appDelivery, curierSofer1, 200.00);
         System.out.println(curierSofer1.getNumeComplet() + " are salariul dupa marire:");
         System.out.println(curierSofer1.getSalariu());
         System.out.println();
 
-        //meniu restaurant
+
+        //meniu entities.restaurant
         restaurant1.vizualizareMeniu();
         System.out.println();
 
         //eliminam un client din aplicatie
-        appDelivery.eliminaClient(client3);
+        AppDService.eliminaClient(appDelivery, client3);
 
         //eliminam un curier din aplicatie
-        appDelivery.eliminaCurier(curierBiciclist2);
+        AppDService.eliminaCurier(appDelivery, curierBiciclist2);
 
-        //eliminam un restaurant din aplicatie
-        appDelivery.eliminaRestaurant(restaurant1);
+        //eliminam un entities.restaurant din aplicatie
+        AppDService.eliminaRestaurant(appDelivery, restaurant1);
 
-        //afisare curieri cu permis de conducere
-        // appDelivery.afisareCurieriSoferi(appDelivery.soferi);
 
     }
 }

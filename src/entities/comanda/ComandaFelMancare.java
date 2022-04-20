@@ -1,6 +1,6 @@
-package Comanda;
+package entities.comanda;
 
-import Restaurant.Restaurant;
+import entities.restaurant.Restaurant;
 
 import java.util.Objects;
 
@@ -43,13 +43,14 @@ public class ComandaFelMancare {
         this.pret = pret;
     }
 
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        ComandaFelMancare comandaFelMancare = (ComandaFelMancare) o;
-//        return getId() == comandaFelMancare.getId() && getIdComanda() == comandaFelMancare.getIdComanda() && getIdFelMancare() == comandaFelMancare.getIdFelMancare();
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ComandaFelMancare)) return false;
+        ComandaFelMancare that = (ComandaFelMancare) o;
+        return Double.compare(that.getPret(), getPret()) == 0 && getRestaurant().equals(that.getRestaurant()) && getNume().equals(that.getNume());
+    }
+
     @Override
     public String toString() {
         return this.getNume() + " -----> " + this.getPret();

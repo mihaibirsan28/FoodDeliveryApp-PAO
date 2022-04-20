@@ -1,12 +1,11 @@
-package AppDelivery;
+package entities.appDelivery;
 
-import Comanda.Comanda;
-import Persoane.Client;
-import Persoane.Curier.Curier;
-import Persoane.Curier.CurierBiciclist;
-import Persoane.Curier.CurierSofer;
-import Restaurant.FelMancare;
-import Restaurant.Restaurant;
+import entities.comanda.Comanda;
+import entities.persoane.Client;
+import entities.persoane.curier.Curier;
+import entities.persoane.curier.CurierBiciclist;
+import entities.persoane.curier.CurierSofer;
+import entities.restaurant.Restaurant;
 
 import java.util.ArrayList;
 
@@ -84,11 +83,6 @@ public class AppDelivery {
         if (c instanceof CurierBiciclist)
             ((CurierBiciclist) c).setSalariu(((CurierBiciclist) c).getSalariu() + marire);
     }
-
-//    public void vizualizareMeniu(Restaurant restaurant) {
-//        for (FelMancare felMancare: this.)
-//    }
-
 
 
 }

@@ -1,11 +1,9 @@
-package Restaurant;
+package entities.restaurant;
 
 import java.util.Objects;
 
 public class FelMancare {
 
-    //private int id;
-    //private Restaurant restaurant;
     private String nume;
     private double pret;
     private String ingrediente;
@@ -13,36 +11,12 @@ public class FelMancare {
     public FelMancare() {
     }
 
-//    public FelMancare( String nume, double pret, String ingrediente) {
-//        //this.restaurant = restaurant;
-//        this.nume = nume;
-//        this.pret = pret;
-//        this.ingrediente = ingrediente;
-//    }
 
     public FelMancare(String nume, double pret, String ingrediente) {
-        //this.id = id;
-        //this.restaurant = restaurant;
         this.nume = nume;
         this.pret = pret;
         this.ingrediente = ingrediente;
     }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public Restaurant getRestaurant() {
-//        return restaurant;
-//    }
-//
-//    public void setRestaurant(Restaurant restaurant) {
-//        this.restaurant = restaurant;
-//    }
 
     public String getNume() {
         return nume;
@@ -74,7 +48,6 @@ public class FelMancare {
         if (o == null || getClass() != o.getClass()) return false;
         FelMancare felMancare = (FelMancare) o;
         return Double.compare(felMancare.getPret(), getPret()) == 0 && Objects.equals(getNume(), felMancare.getNume()) && Objects.equals(getIngrediente(), felMancare.getIngrediente());
-        //getId() == felMancare.getId() && getRestaurant() == felMancare.getRestaurant()
     }
 
     @Override

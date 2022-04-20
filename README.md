@@ -11,20 +11,20 @@
 
 <p></p>
 <p></p>
-<p>Clase: Comanda, ComandaFelMancare, Curier, CurierSofer, CurierBiciclist, Client, Persoana, FelMancare, Restaurant, AppDelivery + interfata Service</p>
+<p>Clase: entities.comanda, ComandaFelMancare, Curier, CurierSofer, CurierBiciclist, Client, Persoana, FelMancare, entities.restaurant, entities.appDelivery + interfata Service</p>
 <p>Actiuni:</p>
 <p>- pentru client -> afisare profil client</p>
 <p>- pentru aplicatie -> adauga/sterge clienti</p>
 <p>- pentru aplicatie -> adauga/sterge curieri</p>
 <p>- pentru aplicatie -> adauga/sterge restaurante</p>
 <p>- pentru aplicatie -> adauga comenzi</p>
-<p>- pentru restaurant -> adauga/sterge un fel de mancare</p>
-<p>- pentru restaurant -> afisare meniu</p>
-<p>- pentru comanda -> adauga ce sa fie in ea , feluri de mancare</p>
-<p>- pentru comanda -> afisare comanda: cost + continut</p>
-<p>- pentru client -> afisare total plata pentru comanda + ce a comandat</p>
+<p>- pentru entities.restaurant -> adauga/sterge un fel de mancare</p>
+<p>- pentru entities.restaurant -> afisare meniu</p>
+<p>- pentru entities.comanda -> adauga ce sa fie in ea , feluri de mancare</p>
+<p>- pentru entities.comanda -> afisare entities.comanda: cost + continut</p>
+<p>- pentru client -> afisare total plata pentru entities.comanda + ce a comandat</p>
 <p>- pentru curieri -> marire salariu</p>
-<p>- pentru curieri -> afisare comenzi efectuate + ce continea fiecare comanda efectuata</p>
+<p>- pentru curieri -> afisare comenzi efectuate + ce continea fiecare entities.comanda efectuata</p>
 <p>- pentru curieri -> afisare numar comenzi efectuate</p>
 <h2>Etapa 2 </h2>
 <p>1. Extindeți proiectul din prima etapa prin realizarea persistentei utilizând fișiere.</p>

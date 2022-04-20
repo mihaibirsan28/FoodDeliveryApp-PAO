@@ -1,4 +1,4 @@
-package Persoane;
+package entities.persoane;
 
 import java.util.Objects;
 

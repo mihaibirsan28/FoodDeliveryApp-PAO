@@ -1,6 +1,6 @@
-package Persoane.Curier;
+package entities.persoane.curier;
 
-import Persoane.Persoana;
+import entities.persoane.Persoana;
 
 public abstract class Curier extends Persoana {
 

@@ -1,10 +1,10 @@
-package Comanda;
+package entities.comanda;
 
-import Persoane.Client;
-import Persoane.Curier.Curier;
-import Persoane.Curier.CurierBiciclist;
-import Persoane.Curier.CurierSofer;
-import Restaurant.Restaurant;
+import entities.persoane.Client;
+import entities.persoane.curier.Curier;
+import entities.persoane.curier.CurierBiciclist;
+import entities.persoane.curier.CurierSofer;
+import entities.restaurant.Restaurant;
 
 import java.util.*;
 
@@ -18,7 +18,7 @@ public class Comanda {
     private Restaurant restaurant;
     private Date plasareComanda;
     private double totalPlata;
-    ArrayList<ComandaFelMancare> continutComanda;
+    List<ComandaFelMancare> continutComanda;
 
     public Comanda() {
     }
@@ -127,7 +127,7 @@ public class Comanda {
         Comanda comanda = (Comanda) o;
         return getId() == comanda.getId() && getClient() == comanda.getClient() &&  getRestaurant() == comanda.getRestaurant() && getCurier() == comanda.getCurier() && Double.compare(getTotalPlata(), comanda.getTotalPlata()) == 0 && Objects.equals(getPlasareComanda(), comanda.getPlasareComanda());
     }
-    //getIdCurier() == comanda.getIdCurier() &&
+
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getClient(),  getRestaurant(), getCurier(), getPlasareComanda(), getTotalPlata());

@@ -1,9 +1,10 @@
-package Persoane;
+package entities.persoane;
 
 
-import Comanda.Comanda;
+import entities.comanda.Comanda;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Client extends Persoana {
@@ -11,7 +12,7 @@ public class Client extends Persoana {
     private int id;
     private String adresa;
     private Comanda comanda;
-    private ArrayList<Comanda> comenzi;
+    private List<Comanda> comenzi;
 
     public Client() {
     }

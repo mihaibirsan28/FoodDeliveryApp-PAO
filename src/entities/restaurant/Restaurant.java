@@ -1,6 +1,7 @@
-package Restaurant;
+package entities.restaurant;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Restaurant {
@@ -8,7 +9,7 @@ public class Restaurant {
     private int id;
     private String nume;
     private String adresa;
-    private ArrayList<FelMancare> felMancare;
+    private List<FelMancare> felMancare;
 
     public Restaurant(){
         this.felMancare = new ArrayList<>();
@@ -44,7 +45,7 @@ public class Restaurant {
     }
 
     public void vizualizareMeniu() {
-        System.out.println("Meniu restaurant " + this.getNume());
+        System.out.println("Meniu entities.restaurant " + this.getNume());
         for (FelMancare felMancare: this.felMancare) {
             System.out.println("->" +felMancare.getNume() + "-> " + felMancare.getPret() + " lei") ;
             System.out.println("ingrediente: " + felMancare.getIngrediente());

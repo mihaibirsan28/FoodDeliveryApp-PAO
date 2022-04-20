@@ -1,21 +1,18 @@
-package Persoane.Curier;
+package entities.persoane.curier;
 
-import Comanda.Comanda;
-import Persoane.Client;
-import Restaurant.Restaurant;
+import entities.comanda.Comanda;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 import java.util.Objects;
-import java.util.PriorityQueue;
 
 public class CurierBiciclist extends Curier{
 
     private int id;
     private String CNP;
     private double salariu;
-    private int nrComenzi=0;
-    ArrayList<Comanda> comenzi;
+    private int nrComenzi;
+    List<Comanda> comenzi;
 
     public CurierBiciclist() {
     }
@@ -33,7 +30,7 @@ public class CurierBiciclist extends Curier{
     }
 
     public void adaugaComanda(Comanda comanda) {
-        //Comanda comanda = new Comanda(id, client, restaurant, this, plasareComanda, totalPlata);
+        //Comanda entities.comanda = new Comanda(id, client, entities.restaurant, this, plasareComanda, totalPlata);
         this.comenzi.add(comanda);
         this.nrComenzi += 1;
     }
@@ -70,7 +67,7 @@ public class CurierBiciclist extends Curier{
         System.out.println("Curierul " + this.getNumeComplet() + " a efectuat urmatoarele comenzi;");
         int k=1;
         for (Comanda c : this.comenzi) {
-            System.out.println("Comanda " + k + ":");
+            System.out.println("comanda " + k + ":");
             c.afiseazaComanda();
             k++;
         }
