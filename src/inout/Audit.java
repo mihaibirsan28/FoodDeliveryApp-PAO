@@ -19,8 +19,8 @@ public class Audit {
     }
 
     public void scrieAudit(String actiune) {
-        try(BufferedWriter fout = new BufferedWriter(new FileWriter("date/audit.csv", true))) {
-            String line = '\n' + actiune + ", " + Calendar.getInstance().getTime();
+        try(BufferedWriter fout = new BufferedWriter(new FileWriter("data/audit.csv", true))) {
+            String line = actiune + ", " + Calendar.getInstance().getTime() + '\n';
             fout.write(line);
         }catch (IOException e) {
             e.printStackTrace();

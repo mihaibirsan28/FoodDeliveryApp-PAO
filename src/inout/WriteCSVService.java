@@ -29,7 +29,7 @@ public class WriteCSVService {
             String line = "";
             if (obiect instanceof Client) {
                 Client client = (Client) obiect;
-                line += client.getId() + ", " + client.getNume() + ", " + client.getPrenume() + ", " + client.getNumarTelefon() + ", " = client.getAdresa();
+                line += client.getId() + ", " + client.getNume() + ", " + client.getPrenume() + ", " + client.getNumarTelefon() + ", " + client.getAdresa();
                 fout.write(line);
             }
             else if(obiect instanceof CurierBiciclist) {
@@ -44,7 +44,7 @@ public class WriteCSVService {
             }
             else if(obiect instanceof FelMancare) {
                 FelMancare felMancare = (FelMancare) obiect;
-                line += felMancare.getNume() + "# " + felMancare.getPret() + "# " + felMancare.getIngrediente();
+                line += felMancare.getNume() + ", " + felMancare.getPret() + ", " + felMancare.getIngrediente();
                 fout.write(line);
             }
             else if(obiect instanceof Restaurant) {

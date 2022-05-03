@@ -28,7 +28,7 @@ public class ReadCSVService {
         List<T> date = new ArrayList<>();
         List<String[]> rows = new ArrayList<>();
         try (BufferedReader fin = new BufferedReader(new FileReader(path))){
-            String line = fin.readLine();
+            String line;
             while ((line = fin.readLine()) != null){
                 String[] obiect = line.split(",");
                 for(int i = 0; i < obiect.length; i++)
@@ -49,13 +49,13 @@ public class ReadCSVService {
             }
             else if (numeObiect.equalsIgnoreCase("CurieriSoferi")){
                 for (var obj : rows){
-                    CurierSofer curierSofer = new CurierSofer(obj[0], obj[1], obj[2], obj[3], obj[4], obj[5], obj[6]);
+                    CurierSofer curierSofer = new CurierSofer(Integer.parseInt(obj[0]), obj[1], obj[2], obj[3], obj[4], obj[5], Double.parseDouble(obj[6]));
                     date.add((T) curierSofer);
                 }
             }
             else if (numeObiect.equalsIgnoreCase("FelMancare")){
                 for (var obj : rows){
-                    FelMancare felMancare = new FelMancare(obj[0], obj[1], obj[2]);
+                    FelMancare felMancare = new FelMancare(obj[0], Double.parseDouble(obj[1]), obj[2]);
                     date.add((T) felMancare);
                 }
             }
@@ -65,7 +65,7 @@ public class ReadCSVService {
                     date.add((T) restaurant);
                 }
             }
-            else throw new WrongObjectType("Nu exista tipul obectelor citite.")
+            else throw new WrongObjectType("Nu exista tipul obectelor citite.");
         }catch (IOException | WrongObjectType e) {
             e.printStackTrace();
         }
