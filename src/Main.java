@@ -25,43 +25,22 @@ public class Main{
 
 
         //clienti
-//        Client client1 = new Client(1,"Birsan", "Mihai", "0729425374",  "Strada 13 Septembrie");
-//        Client client2 = new Client(2,"Popescu", "Ion", "0729499974",  "Bulevardul Dacia");
-//        Client client3 = new Client(3,"Marinescu", "Ioana", "0729456374",  "Bulevardul Unirii");
         List<Client> clienti = fin.citireCSV("data/Clienti.csv", "Clienti");
         Client client1 = clienti.get(0), client2 = clienti.get(1), client3 = clienti.get(2);
 
 
         //curieri
-//        CurierSofer curierSofer1 = new CurierSofer(1, "Ilinca", "Andrei", "0723678234", "5090989437423", "Categoria B", 2500.00);
-//        CurierSofer curierSofer2 = new CurierSofer(2, "Toader", "Mirel", "0723888999", "5121278345678", "Categoria A, B", 2600.00);
-
         List<CurierSofer> curieriSoferi = fin.citireCSV("data/CurieriSoferi.csv", "CurieriSoferi");
         CurierSofer curierSofer1 = curieriSoferi.get(0), curierSofer2 = curieriSoferi.get(1);
-
-//        CurierBiciclist curierBiciclist1 = new CurierBiciclist(3, "Iordache", "Cristi", "0756666777", "5080801789456", 2000.50);
-//        CurierBiciclist curierBiciclist2 = new CurierBiciclist(4, "Tomescu", "Tomi", "0756666774", "5080801712456", 2050.50);
 
         List<CurierBiciclist> curieriBiciclisti = fin.citireCSV("data/CurieriBiciclisti.csv", "CurieriBiciclisti");
         CurierBiciclist curierBiciclist1 = curieriBiciclisti.get(0), curierBiciclist2 = curieriBiciclisti.get(1);
 
         //restaurante
-//        Restaurant restaurant1 = new Restaurant("Tratorria Il Calcio", "Bulevardul Floreasca");
-//        Restaurant restaurant2 = new Restaurant("Suzana", "Bulevardul Unirii");
-//        Restaurant restaurant3 = new Restaurant("B4Market", "Calea Dorobanti");
-
         List<Restaurant> restaurante = fin.citireCSV("data/Restaurante.csv", "Restaurante");
         Restaurant restaurant1 = restaurante.get(0), restaurant2 = restaurante.get(1), restaurant3 = restaurante.get(2);
 
         //Fel Mancare
-//        FelMancare felMancare1 = new FelMancare( "Pizza QuatroStagioni", 35.00, "blat, sos rosii, sunca, mozzarela, ciuperci, porumb");
-//        FelMancare felMancare2 = new FelMancare("Antricot vita", 57.00, "vita 300g, sos special");
-//        FelMancare felMancare3 = new FelMancare("Piept de pui", 25.00, "piept de pui");
-//        FelMancare felMancare4 = new FelMancare("Caracatita grill", 78.00, "caracatita, rucola, sos special");
-//        FelMancare felMancare5 = new FelMancare("Paste Bologno", 30.00, "spagetti, carne porc, mozzarela");
-//        FelMancare felMancare6 = new FelMancare("Somon", 50.00, "somon, lamaie, avocado");
-//        FelMancare felMancare7 = new FelMancare("Salata vinete", 20.00, "vinete, ceapa, ulei");
-
         List<FelMancare> felMancare = fin.citireCSV("data/FelMancare.csv", "FelMancare");
         FelMancare felMancare1 = felMancare.get(0), felMancare2 = felMancare.get(1), felMancare3 = felMancare.get(2), felMancare4 = felMancare.get(3), felMancare5 = felMancare.get(4), felMancare6 = felMancare.get(5), felMancare7 = felMancare.get(6);
 
