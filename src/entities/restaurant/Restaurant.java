@@ -52,7 +52,7 @@ public class Restaurant {
     }
 
     public void vizualizareMeniu() {
-        System.out.println("Meniu entities.restaurant " + this.getNume());
+        System.out.println("Meniu restaurant: " + this.getNume());
         for (FelMancare felMancare: this.felMancare) {
             System.out.println("->" +felMancare.getNume() + "-> " + felMancare.getPret() + " lei") ;
             System.out.println("ingrediente: " + felMancare.getIngrediente());

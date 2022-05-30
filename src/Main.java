@@ -40,10 +40,10 @@ public class Main{
         clientDatabase.updateClient("Strada Valea Oltului", 2);
 
         System.out.println(clientDatabase.getAllClienti());
-        System.out.println(clientDatabase.getClientById(11));
-        clientDatabase.deleteClient(1);
+        System.out.println(clientDatabase.getClientById(1));
         clientDatabase.deleteClient(2);
-
+        System.out.println(clientDatabase.getAllClienti());
+        clientDatabase.deleteTable();
 
         //curieri
         List<CurierSofer> curieriSoferi = fin.citireCSV("data/CurieriSoferi.csv", "CurieriSoferi");
@@ -60,12 +60,13 @@ public class Main{
         curierBiciclistDatabase.createTable();
         curierBiciclistDatabase.addCurieriBiciclist("Iordache", "Cristi", "0756666777", "5080801789456", 2000.50);
         curierBiciclistDatabase.addCurieriBiciclist("Tomescu", "Tomi", "0756666774", "5080801712456", 2050.50);
-        System.out.println(curierBiciclistDatabase.getCurierBiciclistById(9));
+        System.out.println(curierBiciclistDatabase.getCurierBiciclistById(1));
         curierBiciclistDatabase.updateCurierBiciclist(2500.00, 1);
-        System.out.println(curierBiciclistDatabase.getCurierBiciclistById(9));
+        System.out.println(curierBiciclistDatabase.getCurierBiciclistById(1));
         System.out.println(curierBiciclistDatabase.getAllCurieriBiciclisti());
-        curierBiciclistDatabase.deleteCurierBiciclist(7);
-        curierBiciclistDatabase.deleteCurierBiciclist(8);
+        curierBiciclistDatabase.deleteCurierBiciclist(1);
+        curierBiciclistDatabase.deleteCurierBiciclist(2);
+        curierBiciclistDatabase.deleteTable();
 
 
 
@@ -89,7 +90,9 @@ public class Main{
         System.out.println(felMancareDatabase.getFelMancareById(2));
         System.out.println(felMancareDatabase.getAllFelMancare());
         felMancareDatabase.deleteFelMancare(1);
-//        felMancareDatabase.deleteTable();
+        felMancareDatabase.deleteTable();
+
+
         AppDelivery appDelivery = new AppDelivery();
         AppDeliveryServiceImpl AppDService = new AppDeliveryServiceImpl();
 

@@ -39,16 +39,16 @@ public class FelMancareDatabase {
     }
 
     public void addFelMancare(String nume, double pret, String ingrediente) {
-        String insertFelMancareSql = "INSERT INTO feluriMancare (nume, pret, ingrediente) VALUES (?, ?, ?)";
+        String insertFeluriMancareSql = "INSERT INTO feluriMancare (nume, pret, ingrediente) VALUES (?, ?, ?)";
 
         Connection connection = DatabaseConfiguration.getDatabaseConnection();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(insertFelMancareSql);
+            PreparedStatement preparedStatement = connection.prepareStatement(insertFeluriMancareSql);
             preparedStatement.setString(1, nume);
             preparedStatement.setDouble(2, pret);
             preparedStatement.setString(3, ingrediente);
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
         }
         catch (SQLException e) {
             e.printStackTrace();
