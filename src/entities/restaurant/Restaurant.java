@@ -21,6 +21,13 @@ public class Restaurant {
         this.felMancare = new ArrayList<>();
     }
 
+    public Restaurant(int id, String nume, String adresa){
+        this.id = id;
+        this.nume = nume;
+        this.adresa = adresa;
+        this.felMancare = new ArrayList<>();
+    }
+
     public Restaurant(String nume, String adresa, ArrayList<FelMancare> felMancare) {
         this.nume = nume;
         this.adresa = adresa;

@@ -21,6 +21,13 @@ public class CurierBiciclist extends Curier{
         super(nume, prenume, numarTelefon);
     }
 
+    public CurierBiciclist(String nume, String prenume, String numarTelefon, String cnp, double salariu) {
+        super(nume, prenume, numarTelefon);
+        this.CNP = cnp;
+        this.salariu = salariu;
+        this.comenzi = new ArrayList<>();
+    }
+
     public CurierBiciclist(int id, String nume, String prenume, String numarTelefon, String cnp, double salariu) {
         super(nume, prenume, numarTelefon);
         this.id = id;

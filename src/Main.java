@@ -1,4 +1,8 @@
 
+import database.ClientDatabase;
+import database.CurierBiciclistDatabase;
+import database.FelMancareDatabase;
+import database.RestaurantDatabase;
 import entities.appDelivery.AppDelivery;
 import entities.comanda.Comanda;
 import entities.comanda.ComandaFelMancare;
@@ -24,9 +28,21 @@ public class Main{
         ReadCSVService fin = ReadCSVService.getInstance();
 
 
+        System.out.println("Query din Mysql:  Clieti");
         //clienti
         List<Client> clienti = fin.citireCSV("data/Clienti.csv", "Clienti");
         Client client1 = clienti.get(0), client2 = clienti.get(1), client3 = clienti.get(2);
+
+        ClientDatabase clientDatabase = new ClientDatabase();
+        clientDatabase.createTable();
+        clientDatabase.addClient("Birsan", "Mihai", "0729425374", "Strada 13 Septembrie");
+        clientDatabase.addClient("Ionescu", "Marian", "0729423274", "Strada Valea Oltului");
+        clientDatabase.updateClient("Strada Valea Oltului", 2);
+
+        System.out.println(clientDatabase.getAllClienti());
+        System.out.println(clientDatabase.getClientById(11));
+        clientDatabase.deleteClient(1);
+        clientDatabase.deleteClient(2);
 
 
         //curieri
@@ -36,6 +52,24 @@ public class Main{
         List<CurierBiciclist> curieriBiciclisti = fin.citireCSV("data/CurieriBiciclisti.csv", "CurieriBiciclisti");
         CurierBiciclist curierBiciclist1 = curieriBiciclisti.get(0), curierBiciclist2 = curieriBiciclisti.get(1);
 
+
+        //adaugare curieri in mysql
+        System.out.println("Query din Mysql:  Curieri Biclisti");
+
+        CurierBiciclistDatabase curierBiciclistDatabase = new CurierBiciclistDatabase();
+        curierBiciclistDatabase.createTable();
+        curierBiciclistDatabase.addCurieriBiciclist("Iordache", "Cristi", "0756666777", "5080801789456", 2000.50);
+        curierBiciclistDatabase.addCurieriBiciclist("Tomescu", "Tomi", "0756666774", "5080801712456", 2050.50);
+        System.out.println(curierBiciclistDatabase.getCurierBiciclistById(9));
+        curierBiciclistDatabase.updateCurierBiciclist(2500.00, 1);
+        System.out.println(curierBiciclistDatabase.getCurierBiciclistById(9));
+        System.out.println(curierBiciclistDatabase.getAllCurieriBiciclisti());
+        curierBiciclistDatabase.deleteCurierBiciclist(7);
+        curierBiciclistDatabase.deleteCurierBiciclist(8);
+
+
+
+
         //restaurante
         List<Restaurant> restaurante = fin.citireCSV("data/Restaurante.csv", "Restaurante");
         Restaurant restaurant1 = restaurante.get(0), restaurant2 = restaurante.get(1), restaurant3 = restaurante.get(2);
@@ -44,7 +78,18 @@ public class Main{
         List<FelMancare> felMancare = fin.citireCSV("data/FelMancare.csv", "FelMancare");
         FelMancare felMancare1 = felMancare.get(0), felMancare2 = felMancare.get(1), felMancare3 = felMancare.get(2), felMancare4 = felMancare.get(3), felMancare5 = felMancare.get(4), felMancare6 = felMancare.get(5), felMancare7 = felMancare.get(6);
 
-
+        //adaugare feluri mancare in mysql
+        System.out.println("Query Mysql: Fel Mancare");
+        FelMancareDatabase felMancareDatabase = new FelMancareDatabase();
+        felMancareDatabase.createTable();
+        felMancareDatabase.addFelMancare("Pizza QuatroStagioni", 35.00, "blat| sos rosii| sunca| mozzarela");
+        felMancareDatabase.addFelMancare("Antricot vita", 57.00, "vita 300g| sos special");
+        System.out.println(felMancareDatabase.getFelMancareById(2));
+        felMancareDatabase.updateFelMancare(60.00, 2);
+        System.out.println(felMancareDatabase.getFelMancareById(2));
+        System.out.println(felMancareDatabase.getAllFelMancare());
+        felMancareDatabase.deleteFelMancare(1);
+//        felMancareDatabase.deleteTable();
         AppDelivery appDelivery = new AppDelivery();
         AppDeliveryServiceImpl AppDService = new AppDeliveryServiceImpl();
 
@@ -71,6 +116,20 @@ public class Main{
         RestaurantService.adaugaFelMancare(restaurant2, felMancare3);
         RestaurantService.adaugaFelMancare(restaurant3, felMancare4);
         RestaurantService.adaugaFelMancare(restaurant3, felMancare6);
+
+        //adaugare restaurante in mysql
+        System.out.println("Query Mysql : Restaurante");
+        RestaurantDatabase restaurantDatabase = new RestaurantDatabase();
+        restaurantDatabase.createTable();
+        restaurantDatabase.addRestaurant("Suzana", "Bulevardul Uniri");
+        restaurantDatabase.addRestaurant("B4Market", "Calea Floreasca");
+        System.out.println(restaurantDatabase.getRestaurantById(2));
+        restaurantDatabase.updateRestaurant("Calea Dorobanti", 2);
+        System.out.println(restaurantDatabase.getRestaurantById(2));
+        System.out.println(restaurantDatabase.getAllRestaurante());
+        restaurantDatabase.deleteRestaurant(1);
+        System.out.println(restaurantDatabase.getAllRestaurante());
+        restaurantDatabase.deleteTable();
 
         //scoatem un fel de mancare din lista preparatelor unui entities.restaurant
         RestaurantService.adaugaFelMancare(restaurant1, felMancare7);
