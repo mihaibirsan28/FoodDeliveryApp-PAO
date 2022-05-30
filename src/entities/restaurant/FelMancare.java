@@ -3,7 +3,7 @@ package entities.restaurant;
 import java.util.Objects;
 
 public class FelMancare {
-
+    private int id;
     private String nume;
     private double pret;
     private String ingrediente;
@@ -16,6 +16,21 @@ public class FelMancare {
         this.nume = nume;
         this.pret = pret;
         this.ingrediente = ingrediente;
+    }
+
+    public FelMancare(int id, String nume, double pret, String ingrediente) {
+        this.id = id;
+        this.nume = nume;
+        this.pret = pret;
+        this.ingrediente = ingrediente;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNume() {
@@ -45,13 +60,13 @@ public class FelMancare {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FelMancare felMancare = (FelMancare) o;
-        return Double.compare(felMancare.getPret(), getPret()) == 0 && Objects.equals(getNume(), felMancare.getNume()) && Objects.equals(getIngrediente(), felMancare.getIngrediente());
+        if (!(o instanceof FelMancare)) return false;
+        FelMancare that = (FelMancare) o;
+        return getId() == that.getId() && Double.compare(that.getPret(), getPret()) == 0 && Objects.equals(getNume(), that.getNume()) && Objects.equals(getIngrediente(), that.getIngrediente());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( getNume(), getPret(), getIngrediente());
+        return Objects.hash(getId(), getNume(), getPret(), getIngrediente());
     }
 }
